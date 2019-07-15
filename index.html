@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound Box App</title>
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Fav Icon / Logo-->
+  <link rel="shortcut icon" type="image/x-icon" href="https://mir-s3-cdn-cf.behance.net/project_modules/disp/6670e414350111.56282249b619f.png">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">Chords</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">Dance</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">Deep</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">Gospel</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">Fall</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">Heat</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">Rev</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">Unwind</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">Vibe</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/Chord_Synth.wav"></audio>
+  <audio data-key="83" src="sounds/Dance_Synth.wav"></audio>
+  <audio data-key="68" src="sounds/Deep_Synth.wav"></audio>
+  <audio data-key="70" src="sounds/Gospel_Synth.wav"></audio>
+  <audio data-key="71" src="sounds/Synth_Fall_2.wav"></audio>
+  <audio data-key="72" src="sounds/Heat_Synth.wav"></audio>
+  <audio data-key="74" src="sounds/Rev_Synth.wav"></audio>
+  <audio data-key="75" src="sounds/Synth_Unwind.wav"></audio>
+  <audio data-key="76" src="sounds/Synth_Vibe.wav"></audio>
+
+
+  <div class="col">
+        <!-- 1 of 3-->    
+    </div>
+    <div class="col">
+        <!--2 of 3-->
+    </div>
+    <div class="col">
+        <!-- buttons -->
+        <div class="buttons">
+                <!-- buttons-inner -->
+                <div class="buttons-inner">
+                    <a href="https://github.com/aeldenburg001" target="_blank"><img class="icons" style="width:2%" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/github_circle_black-256.png" title="GitHub" alt="github"></a>
+                    <a href="https://www.linkedin.com/in/aeldenburg/" target="_blank"><img class="icons" style="width:2%" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-256.png" title="LinkedIn" alt="linkedin"></a>
+                    <a href="https://www.instagram.com/aeldenburg/" target="_blank"><img class="icons" style="width:2%" src="https://cdn3.iconfinder.com/data/icons/picons-social/57/78-instagram-256.png" title="Instagram" alt="instagram"></a>
+                    <a href="assets/html/contact-me.html" target="_blank"><img class="icons" style="width:2%" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-256.png" title="Contact" alt="contact"></a>
+                </div><!-- /buttons-inner -->   
+            </div><!-- /buttons -->
+    </div>
+
+<script>
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+</script>
+
+
+<footer>
+        
+                
+        &copy Andrew Eldenburg, 2019     
+    
+</footer>
+</body>
+</html>
